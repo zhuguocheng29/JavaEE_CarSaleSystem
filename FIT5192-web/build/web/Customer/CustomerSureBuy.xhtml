@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+        <title>Customer Search Page</title>
+    </h:head>
+    <center>
+    <h:body>
+        
+        <header>
+             <h1>CarSaleSystem</h1>
+        </header>
+        <hr style="margin-left: 50px; margin-right: 50px"></hr>
+        <br></br>
+        <label style="font-size:  30px;">
+            Welcome: 
+        </label>
+        <h:outputLabel id="sure_customer_welcome" value="#{customerManagedBean.getCustomerName()}" style="font-size:  30px; margin-right: 1630px; margin-top: 30px" ></h:outputLabel>
+        
+        <h:form style="margin-top: 50px">
+            <label>Model Name:
+                <h:message for="sure_customer_ModelName"/>
+            </label>
+            <h:inputText id="sure_customer_ModelName" label="Name" size="32" value="#{customerManagedBean.modelName}" >
+            </h:inputText>
+            
+            <label>Model No:
+                <h:message for="sure_customer_ModelNo"/>
+            </label>
+            <h:inputText id="sure_customer_ModelNo" label="No" size="32" value="#{customerManagedBean.modelNo}">
+            </h:inputText>
+            
+            <label>Type:
+                <h:message for="sure_customer_select"/>
+            </label>
+
+            <h:selectOneMenu id ="sure_customer_select" value="#{customerManagedBean.type}">
+                <f:selectItem itemValue="Please choose types of car:" itemLabel="Please choose types of car:" />
+                <f:selectItem itemValue="Sedan" itemLabel="Sedan" />
+                <f:selectItem itemValue="4 wheel drive" itemLabel="4 wheel drive" />
+                <f:selectItem itemValue="Truck" itemLabel="Truck" />
+            </h:selectOneMenu>
+            
+            <label>Make:
+                <h:message for="sure_customer_make"/>
+            </label>
+            <h:inputText  id="sure_customer_make" label="Make" size="32" value="#{customerManagedBean.make}">
+            </h:inputText>
+
+             <br></br>
+            
+             <h:commandButton id="sure_customer_ComplexResearchSubmit" value="Search"  action="/Customer/CustomerSearch" style = "align-content: center; margin-top: 30px; margin-left: 50px"> 
+            </h:commandButton>
+            
+            <h:commandButton id="sure_customer_Order" value="My order"  action="/Customer/CustomerMyOrder" style = "align-content: center; margin-top: 30px; margin-left: 50px"> 
+            </h:commandButton>
+                        
+             <h:commandButton id="sure_customer_Logout" value="Logout" action="#{loginManagedBean.logout()}" style = "align-content: center;  margin-left: 50px"> 
+            </h:commandButton>
+            
+            
+        </h:form>   
+        
+        <h3 style="margin-right: 800px; margin-top: 30px">
+            Confirmation:
+        </h3>
+        
+        <h:form style="margin-left: 100px">
+            <table border="1">
+                <tr>
+                    <td>
+                            <label>VIN
+                            </label>
+                            
+                    </td>
+                    <td>
+                       
+<!--                        <h:InputText id="sure_buy_vin" label="Name" value="#{customerManagedBean.car.vin}" > </h:InputText>-->
+                        <h:inputText id="sure_buy_vin" label="sure_buy_vin" value="#{customerManagedBean.car.vin}" ></h:inputText>
+                        
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Model Name
+                            </label>
+                    </td>
+                    <td>
+                        
+                        <h:outputText id="sure_buy_modelName" value="#{customerManagedBean.car.modelName}"> </h:outputText>
+                        
+                    </td>
+
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Model No.
+                            </label>
+                    </td>
+                    <td>
+                        <h:outputText id="sure_buy_modelNo"  value="#{customerManagedBean.car.modelNo}" > </h:outputText>
+                        
+                    </td>
+
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Make
+                            </label>
+                    </td>
+                    <td>
+                        <h:outputText id="sure_buy_make"  value="#{customerManagedBean.car.make}"> </h:outputText>
+                       
+                    </td>
+
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Type
+                            </label>
+                    </td>
+                    <td>
+                        <h:outputText id="sure_buy_type" value="#{customerManagedBean.car.type}"> </h:outputText>
+                            
+                    </td>
+
+                </tr>
+                
+                
+                <tr>
+                    <td>
+                        <label>Color
+                        </label>
+                    </td>
+                    <td>
+                        <h:outputText id="sure_buy_color" value="#{customerManagedBean.car.color}"> </h:outputText>
+                        
+                    </td>
+
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Price
+                        </label>
+                    </td>
+                    <td>
+                        <h:outputText id="sure_buy_price"  value="#{customerManagedBean.car.price}"> </h:outputText>
+                        
+                    </td>
+
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Description
+                        </label>
+                    </td>
+                    <td>
+                        <h:outputText  value="#{customerManagedBean.car.description}" ></h:outputText>
+                        
+                    </td>
+
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Preview URL
+                        </label>
+                    </td>
+                    <td>
+                        <h:outputText value="#{customerManagedBean.car.preview_url}"  > </h:outputText>
+                        
+                    </td>
+
+                </tr>
+                
+                
+                <tr>
+                    <td>
+                            <label>SalesPerson
+                            </label>
+                    </td>
+                    <td>
+                        <h:selectOneMenu id ="sure_buy_select" value="#{customerManagedBean.salesPersonType}">
+                            <f:selectItem itemValue="Please choose salesPerson:" itemLabel="Please choose salesPerson:" />
+                            <f:selectItems value="#{customerManagedBean.searchSalesPerson()}" />
+                            <f:validator validatorId="salesPersonValidator"/>
+                        </h:selectOneMenu>
+                            
+                    </td>
+
+                </tr>
+                
+                
+                <tr>
+                    <td>
+                        <label>Image
+                        </label>
+                    </td>
+                    <td>
+                        <img src="http://172.16.120.179:8080/FIT5192-web/Image/#{customerManagedBean.car.thumbnail}" height="200" width="300" style="margin: 0 auto"></img>
+                       
+                    </td>
+
+                </tr>    
+                
+            </table>
+            
+            <h:commandButton id="sure_buy_check" value="Check"  style = "margin-top: 30px" action="#{customerManagedBean.generateOrder()}" onclick="return window.confirm('Buy ?')"> 
+            </h:commandButton>
+            
+           
+            
+            <h:commandButton id="sure_buy_cancel" value="Cancel" action="/Customer/Customer"  style = "margin-top: 30px;margin-left: 60px" > 
+            </h:commandButton>
+            
+             <h:message for="sure_buy_select" style="color: red;	font-weight: bold;"></h:message>         
+            
+        </h:form>
+        
+        
+    </h:body>
+    </center>
+</html>
+

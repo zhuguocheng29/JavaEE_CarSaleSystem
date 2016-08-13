@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+        <title>SalesPerson Page</title>
+    </h:head>
+    <center>
+    <h:body>
+        
+        <header>
+             <h1>CarSaleSystem</h1>
+        </header>
+        <hr style="margin-left: 150px; margin-right: 150px"></hr>
+        <h:form style="margin-top: 50px">
+            <label>Model Name:
+                <h:message for="ModelName"/>
+            </label>
+            <h:inputText id="salespersonresearch_ModelName" label="Name" size="32"  value="#{salesPersonManagedBean.modelName}">
+            </h:inputText>
+            
+            <label>Model No:
+                <h:message for="ModelNo"/>
+            </label>
+            <h:inputText id="salespersonresearch_ModelNo" label="No" size="32"  value="#{salesPersonManagedBean.modelNo}">
+            </h:inputText>
+            
+            <label>Type:
+                <h:message for="Type"/>
+            </label>
+
+            <h:selectOneMenu id ="salespersonresearch_select"  value="#{salesPersonManagedBean.type}">
+                <f:selectItem itemValue="Please choose types of car:" itemLabel="Please choose types of car:" />
+                <f:selectItem itemValue="Sedan" itemLabel="Sedan" />
+                <f:selectItem itemValue="4 wheel drive" itemLabel="4 wheel drive" />
+                <f:selectItem itemValue="Truck" itemLabel="Truck" />
+            </h:selectOneMenu>
+            
+            <label>Make:
+                <h:message for="make"/>
+            </label>
+            <h:inputText  id="salespersonresearch_make" label="Make" size="32"  value="#{salesPersonManagedBean.make}">
+            </h:inputText>
+
+                        <br></br>
+            
+             <h:commandButton id="salespersonresearch_Research" value="Search" action="/SalesPerson/SalesPersonResearch" style = "align-content: center; margin-top: 30px; margin-left: 50px"> 
+            </h:commandButton>
+
+                        
+            <h:commandButton id="salespersonresearch_add" value="Add car" action="/SalesPerson/SalesPersonAdd" style = "align-content: center; margin-top: 30px; margin-left: 80px"> 
+            </h:commandButton>
+                        
+            <h:commandButton id="salespersonresearch_researchcustomer" value="Search customer" action="/SalesPerson/SalesPersonSearchCustomer" style = "align-content: center; margin-top: 30px; margin-left: 80px"> 
+            </h:commandButton>
+                        
+             <h:commandButton id="salespersonresearch_Logout" value="Logout" action="#{loginManagedBean.logout()}" style = "align-content: center;  margin-left: 80px"> 
+            </h:commandButton>
+            
+            
+        </h:form>       
+        
+        
+        
+        
+        <h3 style="margin-right: 1730px; margin-top: 30px">
+            All Results:
+        </h3>
+        
+        <h:form>
+             <h:dataTable value="#{salesPersonManagedBean.searchPara()}" var="cars" border = "1">          
+            <h:column>
+                 <f:facet name="header">ModelName</f:facet>
+                #{cars.modelName}
+            </h:column>
+                
+            <h:column>
+                <f:facet name="header">ModelNo</f:facet>
+                #{cars.modelNo}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Type</f:facet>
+                #{cars.type}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Make</f:facet>
+                #{cars.make}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">VIN</f:facet>
+                #{cars.vin}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Color</f:facet>
+                #{cars.color}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Price</f:facet>
+                #{cars.price}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Description</f:facet>
+                #{cars.description}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Preview_URL</f:facet>
+                #{cars.preview_url}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Sample Image</f:facet>
+<!--                 <h:graphicImage library="Image" name="#{cars.thumbnail}" />-->
+                 <img src="http://172.16.120.179:8080/FIT5192-web/Image/#{cars.thumbnail}" height="100" width="150"></img>
+            </h:column>
+                 
+            <h:column>
+                 <f:facet name="header">State</f:facet>
+                #{cars.cstate}
+            </h:column>
+                 
+                 
+    
+            <h:column>
+                 <f:facet name="header">Update</f:facet>
+                 <h:commandLink id="salesPersonResearch_update" value="Update" action="/SalesPerson/SalesPersonUpdate">
+                      <f:setPropertyActionListener target="#{salesPersonManagedBean.car}" value="#{cars}"/>
+                 </h:commandLink>
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Delete</f:facet>
+                 <h:commandLink id="salesPersonResearch_delete" value="Delete" action="#{salesPersonManagedBean.SalesPersonResearchdeleteCar()}" >
+                      <f:setPropertyActionListener target="#{salesPersonManagedBean.car}" value="#{cars}"/>
+                 </h:commandLink>
+            </h:column>
+            
+            
+        </h:dataTable>
+        
+        </h:form>
+       
+        
+        
+    </h:body>
+    </center>
+</html>
+

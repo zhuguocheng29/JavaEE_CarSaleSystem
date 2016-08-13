@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+        <title>SalesPerson Search Customer Page</title>
+    </h:head>
+    <center>
+    <h:body>
+        
+        <header>
+             <h1>CarSaleSystem</h1>
+        </header>
+        <hr style="margin-left: 150px; margin-right: 150px"></hr>
+        <h:form style="margin-top: 50px">
+            <label>Model Name:
+                <h:message for="salespersonSearchCustomer_ModelName"/>
+            </label>
+            <h:inputText id="salespersonSearchCustomer_ModelName" label="Name" size="32" value="#{salesPersonManagedBean.modelName}" >
+            </h:inputText>
+            
+            <label>Model No:
+                <h:message for="salespersonSearchCustomer_ModelNo"/>
+            </label>
+            <h:inputText id="salespersonSearchCustomer_ModelNo" label="No" size="32" value="#{salesPersonManagedBean.modelNo}">
+            </h:inputText>
+            
+            <label>Type:
+                <h:message for="salespersonSearchCustomer_select"/>
+            </label>
+
+            <h:selectOneMenu id ="salespersonSearchCustomer_select" value="#{salesPersonManagedBean.type}">
+                <f:selectItem itemValue="Please choose types of car:" itemLabel="Please choose types of car:" />
+                <f:selectItem itemValue="Sedan" itemLabel="Sedan" />
+                <f:selectItem itemValue="4 wheel drive" itemLabel="4 wheel drive" />
+                <f:selectItem itemValue="Truck" itemLabel="Truck" />
+            </h:selectOneMenu>
+            
+            <label>Make:
+                <h:message for="salespersonSearchCustomer_make"/>
+            </label>
+            <h:inputText  id="salespersonSearchCustomer_make" label="Make" size="32" value="#{salesPersonManagedBean.make}">
+            </h:inputText>
+
+             <br></br>
+            
+             <h:commandButton id="salespersonSearchCustomer_ComplexResearchSubmit" value="Search"  action="/SalesPerson/SalesPersonResearch" style = "align-content: center; margin-top: 30px; margin-left: 50px"> 
+            </h:commandButton>
+
+                        
+            <h:commandButton id="salespersonSearchCustomer_add" value="Add car" action="/SalesPerson/SalesPersonAdd" style = "align-content: center; margin-top: 30px; margin-left: 80px"> 
+            </h:commandButton>
+             
+            
+                        
+             <h:commandButton id="salespersonSearchCustomer_Logout" value="Logout" action="#{loginManagedBean.logout()}" style = "align-content: center;  margin-left: 80px"> 
+            </h:commandButton>
+            
+            
+        </h:form>       
+        
+        
+        <h3 style="margin-right: 300px; margin-top: 30px">
+            Search customer:
+        </h3>
+        
+        <h:form id="salesPersonSearchCustomerForm">
+            <table>
+                <tr>
+                    <td>
+                        <label>ID</label>
+                    </td>
+                    <td>
+<!--                        <h:inputText id="searchCustomer_ID" label="searchCustomer_ID" size="32" value="#{searchCustomerManagedBean.cid}" ></h:inputText>-->
+                        <h:selectOneMenu id ="searchCustomer_ID" value="#{searchCustomerManagedBean.cid}">
+                            <f:selectItem itemValue="Please choose customer:" itemLabel="Please choose customer:" />
+                            <f:selectItems value="#{searchCustomerManagedBean.get_id()}" />
+                            <f:validator validatorId="salesPersonValidator"/>
+                        </h:selectOneMenu>
+                    </td>
+                    <td>
+                        <h:message for="searchCustomer_ID" style="color: red;	font-weight: bold;"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Last name</label>
+                    </td>
+                    <td>
+                        <h:inputText id="searchCustomer_lastname" label="searchCustomer_lastname" size="32" value="#{searchCustomerManagedBean.lastname}"></h:inputText>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>First name</label>
+                    </td>
+                    <td>
+                        <h:inputText id="searchCustomer_firstname" label="searchCustomer_firstname" size="32" value="#{searchCustomerManagedBean.firstname}" ></h:inputText>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Email</label>
+                    </td>
+                    <td>
+                        <h:inputText id="searchCustomer_email" label="searchCustomer_email" size="32" value="#{searchCustomerManagedBean.cemail}" >
+                            
+                        </h:inputText>
+                    </td>
+                    <td>
+                        <h:message for="searchCustomer_email" style="color: red;	font-weight: bold;"/>
+                    </td>
+                </tr>
+                
+            </table>
+            <h:commandButton id="searchCustomer_search" value="Search" action="#{searchCustomerManagedBean.forwarding()}" style = " margin-top: 30px; margin-left: 80px"> 
+            </h:commandButton>
+            
+            <h:commandButton id="searchCustomer_reset" value="Reset" type="reset"  style = " margin-top: 30px;margin-left: 60px"> 
+            </h:commandButton> 
+        </h:form>
+        
+        
+        
+        
+        
+         <h:form style="margin-top: 30px">
+             <h:dataTable value="#{searchCustomerManagedBean.searchPara()}" var="customers" border = "1" rendered="#{searchCustomerManagedBean.show}">          
+            <h:column>
+                 <f:facet name="header">ID</f:facet>
+                #{customers.uid}
+            </h:column>
+                
+            <h:column>
+                <f:facet name="header">Last name</f:facet>
+                #{customers.lastname}
+            </h:column>
+                 
+            <h:column>
+                <f:facet name="header">First name</f:facet>
+                #{customers.firstname}
+            </h:column>
+                 
+             <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{customers.email}
+            </h:column>
+                 
+            <h:column>
+                <f:facet name="header">Address</f:facet>
+                #{customers.address}
+            </h:column>
+                 
+            <h:column>
+                <f:facet name="header">Phone number</f:facet>
+                #{customers.phonenumber}
+            </h:column>
+                 
+                 
+            </h:dataTable>
+         </h:form>
+        
+    </h:body>
+    </center>
+</html>
+

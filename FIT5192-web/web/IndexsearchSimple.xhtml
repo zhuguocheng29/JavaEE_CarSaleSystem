@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>IndexsearchSimple</title>
+    </h:head>
+    <center>
+    <h:body>
+        <header>
+             <h1>CarSaleSystem</h1>
+        </header>
+        <hr style="margin-left: 150px; margin-right: 150px"></hr>
+        <h:form style="margin-top: 50px">
+            <label>Model Name:
+                <h:message for="IndexSearchSimple_ModelName"/>
+            </label>
+            <h:inputText id="IndexSearchSimple_ModelName" label="Name" size="32" value="#{IndexManagedBean.modelName}">
+            </h:inputText>
+            
+            <label>Model No:
+                <h:message for="IndexSearchSimple_ModelNo"/>
+            </label>
+            <h:inputText id="IndexSearchSimple_ModelNo" label="No" size="32" value="#{IndexManagedBean.modelNo}">
+            </h:inputText>
+            
+            <label>Type:
+                <h:message for="IndexSearchSimple_select"/>
+            </label>
+<!--            <h:inputText id="Type" label="Type" size="32" value="#{IndexManagedBean.type}">
+            </h:inputText>-->
+            <h:selectOneMenu id ="IndexSearchSimple_select" value="#{IndexManagedBean.type}">
+                <f:selectItem itemValue="Please choose types of car:" itemLabel="Please choose types of car:" />
+                <f:selectItem itemValue="Sedan" itemLabel="Sedan" />
+                <f:selectItem itemValue="4 wheel drive" itemLabel="4 wheel drive" />
+                <f:selectItem itemValue="Truck" itemLabel="Truck" />
+            </h:selectOneMenu>
+            
+            <label>Make:
+                <h:message for="IndexSearchSimple_make"/>
+            </label>
+            <h:inputText  id="IndexSearchSimple_make" label="Make" size="32" value="#{IndexManagedBean.make}">
+            </h:inputText>
+            
+<!--            <h:commandButton id="submit" value="Submit" action="Indexsearch" style = "margin-left: 50px"> 
+
+            </h:commandButton>-->
+
+                        <br></br>
+            <h:commandButton id="IndexSearchSimple_SimpleResearchSubmit" value="Simple Search" action="IndexsearchSimple" style = "align-content: center; margin-top: 30px; margin-right: 50px"> 
+            </h:commandButton>
+            
+             <h:commandButton id="IndexSearchSimple_ComplexResearchSubmit" value="Detail Search" action="Indexsearch" style = "align-content: center; margin-top: 30px; margin-left: 50px"> 
+            </h:commandButton>
+
+             <h:commandButton id="IndexSearchSimple_Login" value="Login" action="Login?faces-redirect=true" style = "align-content: center;  margin-left: 80px"> 
+            </h:commandButton>
+            
+            <h:commandButton id="IndexSearchSimple_Register" value="Register" action="Register?faces-redirect=true" style = "align-content: center; margin-left: 80px"> 
+            </h:commandButton>
+                
+            
+        </h:form>       
+
+        <h3 style="margin-right: 160px; margin-top: 30px">
+            Results:
+        </h3>
+        
+        
+        <h:dataTable value="#{IndexManagedBean.searchPara()}" var="cars" border = "1">          
+            <h:column>
+                 <f:facet name="header">ModelName</f:facet>
+                #{cars.modelName}
+            </h:column>
+                
+            <h:column>
+                <f:facet name="header">ModelNo</f:facet>
+                #{cars.modelNo}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Type</f:facet>
+                #{cars.type}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Make</f:facet>
+                #{cars.make}
+            </h:column>
+            
+        </h:dataTable>
+    </h:body>
+    </center>
+</html>
+

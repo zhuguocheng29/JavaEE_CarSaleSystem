@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Order successfully !</title>
+    </h:head>
+    <center>
+    <h:body>
+        <p>Generate order successfully ! </p>
+        <h:form>
+            <h:commandButton id="order_customer_buy" value="Pay"  action="#{customerManagedBean.buySuccessful()}" style = " margin-top: 30px; margin-left: 50px"> 
+                 </h:commandButton>  
+            
+                 <h:commandButton id="order_customer_store" value="My order"  action="/Customer/CustomerMyOrderProcess" style = " margin-top: 30px; margin-left: 50px"> 
+                 </h:commandButton>  
+            
+            <h:commandButton id="order_customer_cancel" value="Cancel"  action="#{customerManagedBean.cancel()}" style = " margin-top: 30px; margin-left: 50px"> 
+                 </h:commandButton> 
+        </h:form>
+
+    </h:body>
+    </center>
+</html>
+

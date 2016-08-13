@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Register</title>
+    </h:head>   
+    <h:body style="margin-left: 100px">
+        <header>
+             <h1>Register</h1>
+        </header>
+        <hr style=" margin-right: 1400px"></hr>
+        
+        <h:form style="margin-top: 30px">
+                    <h:commandButton id="backindex" value="Back to index" action="index?faces-redirect=true" ></h:commandButton>
+        </h:form>
+        
+        <h:form style="margin-top: 30px" id="userForm" >
+            <table>
+                <tr>
+                    <td>
+                         <label>ID: </label> 
+                         <h:inputText id="ID" label="ID" size="32" style="margin-left: 90px" required="true" requiredMessage="You must enter Your ID!" value="#{registerManagedBean.users.uid}">
+                         </h:inputText>          
+                    </td>
+                    <td>
+                         <h:message for="ID" style="color: red;	font-weight: bold;"/>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <label style="">Last name: </label>
+                        <h:inputText id="lastname" label="lastname" size="32" style="margin-left: 34px" required="true" requiredMessage="Please input your lastname! " value="#{registerManagedBean.users.lastname}">
+<!--                        <h:message for="lastname" style="color: red;	font-weight: bold;"/>-->
+                            <f:validator validatorId="nameValidator"/>
+                        </h:inputText>
+                    </td>
+                    <td>
+                           <h:message for="lastname" style="color: red;	font-weight: bold;"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>First name: </label>
+                        <h:inputText id="firstname" label="firstname" size="32" style="margin-left: 26px" value="#{registerManagedBean.users.firstname}" required="true" requiredMessage="Please input your firstname! ">
+                            <f:validator validatorId="nameValidator"/>
+                        </h:inputText>
+                    </td>
+                    <td>
+                        <h:message for="firstname" style="color: red;	font-weight: bold;"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Email: </label>
+                        <h:inputText id="email" label="email" size="32" style="margin-left: 66px" value="#{registerManagedBean.users.email}" required="true" requiredMessage="Please input your email! ">
+<!--                        <f:validateRegex pattern="(^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)" ></f:validateRegex>-->
+                            <f:validator validatorId="emailValidator"/>
+                        </h:inputText>
+                    </td>
+                    <td>
+                          <h:message for="email" style="color: red;	font-weight: bold;"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Password: </label>
+<!--                        <h:inputSecret id="password" label="password" size="32" style="margin-left: 42px">
+                            
+                        </h:inputSecret>-->
+<h:inputSecret  size="32" style="margin-left: 42px" id="pswd" onblur="check();" value="#{registerManagedBean.users.password}" required="true" requiredMessage="Consists of 6-10 letters or Numbers!">                                    
+                                
+                                <f:validator validatorId="passwordValidator"/>
+                            
+                            </h:inputSecret>
+                    </td>
+                    <td>
+                          <h:message id="passwordMsg" for="pswd" style="color: red;	font-weight: bold;"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Check again: </label>
+<!--                        <h:inputSecret id="check" label="check" size="32" style="margin-left: 18px">
+                             
+                        </h:inputSecret>-->
+<h:inputSecret  size="32" style="margin-left: 18px" id="repswd" onblur="checkpswd();" value="#{registerManagedBean.checkpassword}" required="true" requiredMessage="Consists of 6-10 letters or Numbers!" >  
+           
+                            <f:validator validatorId="passwordValidator"/> 
+                            </h:inputSecret>    
+                    </td>
+                    
+                    <td>
+                         <h:message id="repasswordMsg" for="repswd" style="color: red;	font-weight: bold;"/>  
+                    </td>
+
+                </tr>
+                
+                
+                <tr>
+                    <td>
+                        <label>Type: </label>
+                        <h:selectOneMenu id ="select" style="margin-left: 74px" value="#{registerManagedBean.type}" required="true" requiredMessage="Please input your type!">
+                            <f:selectItem itemValue="Please choose the role of users:" itemLabel="Please choose the role of users:" />
+                            <f:selectItem itemValue="Customer" itemLabel="Customer" />
+                            <f:selectItem itemValue="SalesPerson" itemLabel="SalesPerson" />
+                          </h:selectOneMenu>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Address: </label>
+                        <h:inputText id="address" label="address" size="32" style="margin-left: 50px " required="true" requiredMessage="You must enter Your address!" value="#{registerManagedBean.users.address}">
+                            
+                        </h:inputText>
+                    </td>
+                    <td>
+                         <h:message for="address" style="color: red;	font-weight: bold;"/>
+                    </td>
+                </tr>
+              
+                <tr>
+                    <td>
+                        <label>Phone number: </label>
+                        <h:inputText id="phonenumber" label="phonenumber" size="32" style="margin-left: 9px" value="#{registerManagedBean.users.phonenumber}" required="true" requiredMessage="Please input your phonenumber! ">
+                            <f:validator validatorId="landlineValidator"/>
+                        </h:inputText>
+                    </td>
+                    <td>                                         
+                          <h:message for="phonenumber" style="color: red;	font-weight: bold;"/>                
+                    </td>
+                </tr>
+                
+            </table>
+            <br></br>
+            <h:commandButton id="confirm" value="OK"  action="#{registerManagedBean.addOrcheck()}" style="margin-left: 100px">
+            </h:commandButton>
+            <h:commandButton id="reset" value="Reset" type="reset" style="margin-left: 30px" ></h:commandButton>
+        </h:form>
+        
+        <script>
+               function check(){  
+//                    //获取密码后的提示信息  
+//                    var passwd = document.getElementById("userForm:pswd");  
+//                    var passwordMsg = document.getElementById("userForm:passwordMsg"); 
+//                    //判断是否为火狐浏览器  passwordMsg
+//                    if(window.navigator.userAgent.toLowerCase().indexOf('firefox'!=-1)){  
+//                        if(passwd.textContent==""){  
+//                            passwordMsg.style.color="red";
+//                            passwordMsg.textContent="Consists of 6-10 letters or Numbers313123";  
+//                        }  
+//                    }else{  
+//                        if(passwd.innerText==""){  
+//                            passwordMsg.style.color="red";  
+//                            passwordMsg.innerText="Consists of 6-10 letters or Numbers11111";  
+//                        }  
+//                    }  
+                }  
+        
+               function checkpswd(){  
+                    //获取密码，确认密码及确认密码后提示信息  
+                    var pswd = document.getElementById("userForm:pswd");  
+                    var repswd = document.getElementById("userForm:repswd");  
+                    var repasswd = document.getElementById("userForm:repasswordMsg");  
+
+                    //判断密码是否一致  
+                    if(pswd.value!=repswd.value){  
+                        //设置提示信息为，密码不一致  
+                        repasswd.style.color="red";  
+                        repasswd.style.fontWeight="bold";
+                        if(window.navigator.userAgent.toLowerCase().indexOf('firefox'!=-1)){  
+                            repasswd.textContent="Password not the same";
+                          
+                        }else{  
+                            repasswd.innerText="Password not the same";
+                          
+                        }  
+                    }else{  
+                        //设置提示信息为，由10-15位字母或数字组成  
+                        repasswd.style.color="red";  
+                        repasswd.style.fontWeight="bold";
+                        if(window.navigator.userAgent.toLowerCase().indexOf('firefox'!=-1)){  
+                            repasswd.textContent="Correct";  
+                        }else{  
+                            repasswd.innerText="Correct";  
+                        }  
+                    }  
+                }               
+  
+        </script>
+
+        
+        
+        
+        
+        
+        
+    </h:body>
+</html>
+

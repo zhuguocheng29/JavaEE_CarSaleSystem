@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Buy successfully !</title>
+    </h:head>
+    <center>
+    <h:body>
+        <h1>Pay successfully !</h1>
+        <h2 style="margin-right: 1700px">Results: </h2>
+        <h:form>
+            <h:dataTable value="#{customerManagedBean.buySuccessful_list()}" var="sale" border = "1">          
+            <h:column>
+                 <f:facet name="header">ModelName</f:facet>
+                #{sale.vin.modelName}
+            </h:column>
+                
+            <h:column>
+                <f:facet name="header">ModelNo</f:facet>
+                #{sale.vin.modelNo}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Type</f:facet>
+                #{sale.vin.type}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Make</f:facet>
+                #{sale.vin.make}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">VIN</f:facet>
+                #{sale.vin.vin}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Color</f:facet>
+                #{sale.vin.color}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Price</f:facet>
+                #{sale.vin.price}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Description</f:facet>
+                #{sale.vin.description}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Preview_URL</f:facet>
+                #{sale.vin.preview_url}
+            </h:column>
+            
+            <h:column>
+                 <f:facet name="header">Sample Image</f:facet>
+                 <img src="http://172.16.120.179:8080/FIT5192-web/Image/#{sale.vin.thumbnail}" height="100" width="150"></img>
+            </h:column>  
+            </h:dataTable>     
+        </h:form>
+            
+        <h:form>
+                <h:commandButton id="buy_customer_back" value="Back to Customer Page" action="/Customer/Customer" style="margin-top: 30px"></h:commandButton>
+
+        </h:form>
+    </h:body>
+    </center>
+</html>
+

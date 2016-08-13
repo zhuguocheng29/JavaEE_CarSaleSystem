@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>SalesPerson Update Page</title>
+    </h:head>
+    <center>
+    <h:body>
+        
+        <header>
+             <h1>CarSaleSystem</h1>
+        </header>
+        <hr style="margin-left: 150px; margin-right: 150px"></hr>
+        <h:form style="margin-top: 50px">
+            <label>Model Name:
+                <h:message for="salespersonUpdate_ModelName"/>
+            </label>
+            <h:inputText id="salespersonUpdate_ModelName" label="Name" size="32" value="#{salesPersonManagedBean.modelName}">
+            </h:inputText>
+            
+            <label>Model No:
+                <h:message for="salespersonUpdate_ModelNo"/>
+            </label>
+            <h:inputText id="salespersonUpdate_ModelNo" label="No" size="32" value="#{salesPersonManagedBean.modelNo}">
+            </h:inputText>
+            
+            <label>Type:
+                <h:message for="salespersonUpdate_select"/>
+            </label>
+
+            <h:selectOneMenu id ="salespersonUpdate_select" value="#{salesPersonManagedBean.type}">
+                <f:selectItem itemValue="Please choose types of car:" itemLabel="Please choose types of car:" />
+                <f:selectItem itemValue="Sedan" itemLabel="Sedan" />
+                <f:selectItem itemValue="4 wheel drive" itemLabel="4 wheel drive" />
+                <f:selectItem itemValue="Truck" itemLabel="Truck" />
+            </h:selectOneMenu>
+            
+            <label>Make:
+                <h:message for="salespersonUpdate_make"/>
+            </label>
+            <h:inputText  id="salespersonUpdate_make" label="Make" size="32" value="#{salesPersonManagedBean.make}">
+            </h:inputText>
+
+             <br></br>
+            
+             <h:commandButton id="salespersonUpdate_ComplexResearchSubmit" value="Search"  action="/SalesPerson/SalesPersonResearch" style = "align-content: center; margin-top: 30px; margin-left: 50px"> 
+            </h:commandButton>
+
+                        
+            <h:commandButton id="salespersonUpdate_add" value="Add car"  style = "align-content: center; margin-top: 30px; margin-left: 80px"> 
+            </h:commandButton>
+             
+             
+            <h:commandButton id="salespersonUpdate_researchcustomer" value="Search customer" action="/SalesPerson/SalesPersonSearchCustomer" style = "align-content: center; margin-top: 30px; margin-left: 80px"> 
+            </h:commandButton>
+            
+                        
+             <h:commandButton id="salespersonUpdate_Logout" value="Logout" action="#{loginManagedBean.logout()}" style = "align-content: center;  margin-left: 80px"> 
+            </h:commandButton>          
+            
+        </h:form>                   
+        
+        <h3 style="margin-right: 300px; margin-top: 30px">
+            Results:
+        </h3>
+        
+        <h:form>
+            <table>
+                <tr>
+                    <td>
+                            <label>VIN
+                            </label>
+                            
+                    </td>
+                    <td>
+                        <h:inputText id="update_vin"  label="update_vin" size="32" value="#{salesPersonManagedBean.car.vin}" required="true" requiredMessage="Not null !" > </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="update_vin"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Model Name
+                            </label>
+                    </td>
+                    <td>
+                        <h:inputText id="update_modelName"  label="update_modelName" size="32" value="#{salesPersonManagedBean.car.modelName}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="update_modelName"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Model No.
+                            </label>
+                    </td>
+                    <td>
+                        <h:inputText id="update_modelNo"  label="update_modelNo" size="32" value="#{salesPersonManagedBean.car.modelNo}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="update_modelNo"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Make
+                            </label>
+                    </td>
+                    <td>
+                        <h:inputText id="update_make"  label="update_make" size="32" value="#{salesPersonManagedBean.car.make}" required="true" requiredMessage="Not null !"> </h:inputText>
+                       
+                    </td>
+                    <td>
+                         <h:message for="update_make"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Type
+                            </label>
+                    </td>
+                    <td>
+                        <h:selectOneMenu id ="update_select" value="#{salesPersonManagedBean.car.type}">
+                                <f:selectItem itemValue="Please choose types of car:" itemLabel="Please choose types of car:" />
+                                <f:selectItem itemValue="Sedan" itemLabel="Sedan" />
+                                <f:selectItem itemValue="4 wheel drive" itemLabel="4 wheel drive" />
+                                <f:selectItem itemValue="Truck" itemLabel="Truck" />
+                            </h:selectOneMenu>
+                            
+                    </td>
+                    <td>
+                        <h:message for="update_select"/>
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td>
+                        <label>Color
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputText id="update_color"  label="update_color" size="32" value="#{salesPersonManagedBean.car.color}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="update_color"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Price
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputText id="update_price"  label="update_price" size="32" value="#{salesPersonManagedBean.car.price}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="update_price"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Description
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputTextarea id="update_description"  label="update_description" value="#{salesPersonManagedBean.car.description}" required="true" requiredMessage="Not null !"></h:inputTextarea>
+                        
+                    </td>
+                    <td>
+                        <h:message for="update_description"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Preview URL
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputTextarea id="update_preview_url"  label="update_preview_url" value="#{salesPersonManagedBean.car.preview_url}" required="true" requiredMessage="Not null !" > </h:inputTextarea>
+                        
+                    </td>
+                    <td>
+                        <h:message for="update_preview_url"/>
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td>
+                        <label>State
+                        </label>
+                    </td>
+                    <td>
+                        <h:selectOneMenu id ="update_state" value="#{salesPersonManagedBean.car.cstate}">
+                            <f:selectItem itemValue="Available" itemLabel="Available" />
+                            <f:selectItem itemValue="Not available" itemLabel="Not available" />
+                        </h:selectOneMenu>
+                        
+<!--                        
+                        <h:inputText id="update_state"  label="update_state" size="32" value="#{salesPersonManagedBean.car.cstate}" > </h:inputText>-->
+                       
+                    </td>
+                    <td>
+                         <h:message for="update_state"/>
+                    </td>
+                </tr>    
+                
+            </table>
+            
+            <h:commandButton id="update_check" value="Update"  style = "margin-top: 30px" action="#{salesPersonManagedBean.SalesPersonUpdate()}" onclick="return window.confirm('update ?')"> 
+            </h:commandButton>
+            
+                        
+            <h:commandButton id="update_reset" value="Reset" type="reset"  style = " margin-top: 30px;margin-left: 80px"> 
+            </h:commandButton> 
+            
+            
+        </h:form>
+    </h:body>
+    </center>
+</html>
+

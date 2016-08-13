@@ -1,0 +1,325 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+        <title>SalesPerson Add Page</title>
+    </h:head>
+    <center>
+    <h:body>
+        
+        <header>
+             <h1>CarSaleSystem</h1>
+        </header>
+        <hr style="margin-left: 150px; margin-right: 150px"></hr>
+        <h:form style="margin-top: 50px">
+            <label>Model Name:
+                <h:message for="ModelName"/>
+            </label>
+            <h:inputText id="salespersonAdd_ModelName" label="Name" size="32" value="#{salesPersonManagedBean.modelName}" >
+            </h:inputText>
+            
+            <label>Model No:
+                <h:message for="ModelNo"/>
+            </label>
+            <h:inputText id="salespersonAdd_ModelNo" label="No" size="32" value="#{salesPersonManagedBean.modelNo}">
+            </h:inputText>
+            
+            <label>Type:
+                <h:message for="Type"/>
+            </label>
+
+            <h:selectOneMenu id ="salespersonAdd_select" value="#{salesPersonManagedBean.type}">
+                <f:selectItem itemValue="Please choose types of car:" itemLabel="Please choose types of car:" />
+                <f:selectItem itemValue="Sedan" itemLabel="Sedan" />
+                <f:selectItem itemValue="4 wheel drive" itemLabel="4 wheel drive" />
+                <f:selectItem itemValue="Truck" itemLabel="Truck" />
+            </h:selectOneMenu>
+            
+            <label>Make:
+                <h:message for="make"/>
+            </label>
+            <h:inputText  id="salespersonAdd_make" label="Make" size="32" value="#{salesPersonManagedBean.make}">
+            </h:inputText>
+
+             <br></br>
+            
+             <h:commandButton id="salespersonAdd_ComplexResearchSubmit" value="Search"  action="/SalesPerson/SalesPersonResearch" style = "align-content: center; margin-top: 30px; margin-left: 50px"> 
+            </h:commandButton>
+
+<!--                        
+            <h:commandButton id="salespersonAdd_add" value="Add car" action="/SalesPerson/SalesPersonAdd" style = "align-content: center; margin-top: 30px; margin-left: 80px"> 
+            </h:commandButton>-->
+             
+            <h:commandButton id="salespersonAdd_researchcustomer" value="Search customer" action="/SalesPerson/SalesPersonSearchCustomer" style = "align-content: center; margin-top: 30px; margin-left: 80px"> 
+            </h:commandButton>
+            
+                        
+             <h:commandButton id="salespersonAdd_Logout" value="Logout" action="#{loginManagedBean.logout()}" style = "align-content: center;  margin-left: 80px"> 
+            </h:commandButton>
+            
+            
+        </h:form>       
+        
+        
+        
+        
+        <h3 style="margin-right: 200px; margin-top: 30px">
+            Add Car:
+        </h3>
+        
+        
+        <h:form id="salesPersonAddForm">
+            <table>
+                <tr>
+                    <td>
+                            <label>VIN
+                            </label>
+                            
+                    </td>
+                    <td>
+                        <h:inputText id="Add_vin"  label="Add_vin" size="32" value="#{addCarManagedBean.add_vin}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="Add_vin" style="color: red;	font-weight: bold;"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Model Name
+                            </label>
+                    </td>
+                    <td>
+                        <h:inputText id="Add_modelName"  label="Add_modelName" size="32" value="#{addCarManagedBean.add_modelName}" required="true" requiredMessage="Not null !"> </h:inputText>
+                       
+                    </td>
+                    <td>
+                         <h:message for="Add_modelName"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Model No.
+                            </label>
+                    </td>
+                    <td>
+                        <h:inputText id="Add_modelNo"  label="Add_modelNo" size="32" value="#{addCarManagedBean.add_modelNo}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="Add_modelNo"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Make
+                            </label>
+                    </td>
+                    <td>
+                        <h:inputText id="Add_make"  label="Add_make" size="32" value="#{addCarManagedBean.add_make}" required="true" requiredMessage="Not null !"> </h:inputText>
+                       
+                    </td>
+                    <td>
+                         <h:message for="Add_make"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                            <label>Type
+                            </label>
+                    </td>
+                    <td>
+                        <h:selectOneMenu id ="Add_select" value="#{addCarManagedBean.add_type}">
+                                <f:selectItem itemValue="Please choose types of car:" itemLabel="Please choose types of car:" />
+                                <f:selectItem itemValue="Sedan" itemLabel="Sedan" />
+                                <f:selectItem itemValue="4 wheel drive" itemLabel="4 wheel drive" />
+                                <f:selectItem itemValue="Truck" itemLabel="Truck" />
+                            </h:selectOneMenu>
+                            
+                    </td>
+                    <td>
+                        <h:message for="Add_select"/>
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td>
+                        <label>Color
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputText id="Add_color"  label="Add_color" size="32" value="#{addCarManagedBean.add_color}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="Add_color"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Price
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputText id="Add_price"  label="Add_price" size="32" value="#{addCarManagedBean.add_price}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="Add_price"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Description
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputTextarea id="Add_description"  label="Add_description" value="#{addCarManagedBean.add_description}" required="true" requiredMessage="Not null !"></h:inputTextarea>
+                        
+                    </td>
+                    <td>
+                        <h:message for="Add_description"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Preview URL
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputTextarea id="Add_preview_url"  label="Add_preview_url" value="#{addCarManagedBean.add_PreviewURL}" required="true" requiredMessage="Not null !"> </h:inputTextarea>
+                        
+                    </td>
+                    <td>
+                        <h:message for="Add_preview_url"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label>Image
+                        </label>
+                    </td>
+                    <td>
+                        <h:inputText id="Add_img"  label="Add_img" size="32" value="#{addCarManagedBean.add_Image}" required="true" requiredMessage="Not null !"> </h:inputText>
+                        
+                    </td>
+                    <td>
+                        <h:message for="Add_img"/>
+                    </td>
+                </tr>  
+                
+                <tr>
+                    <td>
+                        <label>State
+                        </label>
+                    </td>
+                    <td>
+                        
+                        <h:selectOneMenu id ="Add_state" value="#{addCarManagedBean.add_State}">
+                            <f:selectItem itemValue="Available" itemLabel="Available" />
+                            <f:selectItem itemValue="Not available" itemLabel="Not available" />
+                        </h:selectOneMenu>
+                        
+                        
+                    </td>
+                    <td>
+                        <h:message for="Add_state"/>
+                    </td>
+                </tr>    
+                
+            </table>
+            
+            <h:commandButton id="Add_check" value="Add"  style = "margin-top: 30px" action="#{addCarManagedBean.SalesPersonaddCar()}" onclick="return window.confirm('add ?')"> 
+            </h:commandButton>
+            
+                        
+            <h:commandButton id="Add_reset" value="Reset" type="reset"  style = " margin-top: 30px;margin-left: 80px"> 
+            </h:commandButton> 
+            
+
+            
+        </h:form>
+        
+        <h:form>
+                    
+            <label> Search by VIN: </label>
+            <h:inputText id="Add_rest_vin"  label="Add_vin" size="32" value="#{addCarManagedBean.add_vin}" required="true" requiredMessage="Not null !" style="margin-left: 30px">
+                <f:validator validatorId="vinValidator"/>
+            </h:inputText>
+            
+             <h:message for="Add_rest_vin" style="color: red;	font-weight: bold;"/> 
+
+
+            <h:commandButton id="Add_restful" value="Use API" action="#{addCarManagedBean.useAPI()}" style = " margin-top: 30px; margin-left: 30px"> 
+            </h:commandButton> 
+        </h:form>
+        
+        <h:form>
+            <h:dataTable value="#{addCarManagedBean.show()}" var="cars" border = "1" rendered="#{addCarManagedBean.add_show}">
+                <h:column>
+                     <f:facet name="header">ModelName</f:facet>
+                    #{cars.modelName}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">ModelNo</f:facet>
+                    #{cars.modelNo}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Type</f:facet>
+                    #{cars.type}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">Make</f:facet>
+                    #{cars.make}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">VIN</f:facet>
+                    #{cars.vin}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">Color</f:facet>
+                    #{cars.color}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">Price</f:facet>
+                    #{cars.price}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">Description</f:facet>
+                    #{cars.description}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">Preview_URL</f:facet>
+                    #{cars.preview_url}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">Sample Image</f:facet>
+                     <img src="http://172.16.120.179:8080/FIT5192-web/Image/#{cars.thumbnail}" height="100" width="150"></img>
+                </h:column>       
+            </h:dataTable>
+        </h:form>
+        
+    </h:body>
+    </center>
+</html>
+
